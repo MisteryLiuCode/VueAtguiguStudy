@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+<!--    准备好一个容器-->
+<div id="root">
+    <h1>地址：{{address}}</h1>
+    <h1>家庭地址：{{home}}</h1>
+    <h1>家庭地址：{{$options}}</h1>
+
+</div>
+
+<script type="text/javascript">
+   const vm=new Vue({
+        el:'#root',
+        data:{
+            home:'许昌市',
+            address:'河南',
+        }
+    })
+   console.log(vm)
+</script>
+
+</body>
+</html>
