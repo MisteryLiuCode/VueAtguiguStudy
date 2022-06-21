@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<!--引入vue-->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <body>
-<!--创建模版-->
+<!--准备好一个容器-->
 <div id="root">
-    <h1>地址：{{address}}</h1>
-    <h1>家庭地址：{{home}}</h1>
+    姓：<input type="text" v-model="firstName"><br>
+    名：<input type="text" v-model="lastName"><br>
+    全名：<span>{{firstName}}-{{lastName.slice(0,5)}}</span>
 </div>
+
 <script type="text/javascript">
-    const vm=new Vue({
+    new Vue({
+    //    实例绑定盒子
         el:'#root',
         data:{
-            address:'河南',
-            home:'许昌',
+            firstName:'刘',
+            lastName:'帅彪'
         }
+
     })
 </script>
+
 </body>
 </html>

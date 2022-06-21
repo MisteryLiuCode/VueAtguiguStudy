@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<!--引入vue-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+<!--准备好一个容器-->
+<div id="root">
+  姓：<input type="text" v-model="firstName"><br>
+  名：<input type="text" v-model="lastName"><br>
+<!--  直接可以拿到属性，是因为这个属性就在vue的实例里-->
+<!--  下面说如果获取的以后就会调用get方法是不对的，因为当vue第一次获取的的时候会把值放在缓存里，后来再获取的时候就会拿出来-->
+  全名：<span>{{fullName2}}</span><br>
+<!--  全名：<span>{{fullName}}</span><br>-->
+<!--  全名：<span>{{fullName}}</span><br>-->
+<!--  全名：<span>{{fullName}}</span>-->
+</div>
+
+<script type="text/javascript">
+  const vm=new Vue({
+    //    实例绑定盒子
+    el:'#root',
+    data:{
+      firstName:'刘',
+      lastName:'帅彪'
+    },
+    //计算属性放在这里
+    computed:{
+      //定一个计算的属性
+      fullName:{
+        //获取fullName的时候调用get方法
+        get(){
+          //返回全名
+          console.log('调用fullName的get方法')
+          return this.firstName +'-'+this.lastName
+        },
+      //  有get就会有set
+        set(value){
+        //  输入的是这种类型的是李-四
+          const arr=value.split('-')
+          this.firstName=arr[0]
+          this.lastName=arr[1]
+        }
+      },
+
+    //  简写方式，看着像是一个函数，因为只读不改，所以这个函数相当于是当作get用了。
+      fullName2(){
+        return this.firstName +'-'+this.lastName
+      }
+    }
+  })
+</script>
+</body>
+</html>

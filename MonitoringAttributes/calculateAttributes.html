@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>今天天气很{{info}}</h1>
+        <button id="bt" @click="changeWeather">点击切换天气</button>
+    </div>
+    <script type="text/javascript">
+        const vm= new Vue({
+            //绑定标签
+            el:'#root',
+            data:{
+                // 用布尔值设置结果
+                isHoot:true,
+            },
+            computed:{
+                // 因为这个计算属性不牵扯修改的情况，所以可以使用简写的方式
+                info(){
+                    return this.isHoot ?'炎热':'凉爽'
+                }
+            },
+            methods: {
+                changeWeather(){
+                    this.isHoot=!this.isHoot
+                },
+            },
+        })
+    </script>
+</body>
+</html>

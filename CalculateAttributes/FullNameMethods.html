@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--引入vue-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+<!--准备好一个容器-->
+<div id="root">
+    姓：<input type="text" v-model="firstName"><br>
+    名：<input type="text" v-model="lastName"><br>
+<!--    这里改为调用函数-->
+<!--    全名：<span>{{firstName}}-{{lastName.slice(0,5)}}</span>-->
+<!--    方法就必须要有括号了，因为这是插值语法，没有括号就代表获取属性值了-->
+    全名：<span>{{fullName()}}</span>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+    //    实例绑定盒子
+        el:'#root',
+        data:{
+            firstName:'刘',
+            lastName:'帅彪'
+        },
+        methods:{
+            fullName(){
+                console.log('我被调用了')
+                return this.firstName+'-'+this.lastName
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
