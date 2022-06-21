@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 初始化一些样式 */
+    .basic {
+        width: 300px;
+        height: 50px;
+        border: 1px solid black;
+    }
+
+    .happy {
+        border: 3px solid red;
+        background-color: rgba(255, 255, 0, 0.644);
+        background: linear-gradient(30deg, yellow, pink, orange, yellow);
+    }
+
+    .sad {
+        border: 4px dashed rgb(2, 197, 2);
+        background-color: skyblue;
+    }
+
+    .normal {
+        background-color: #bfa;
+    }
+
+    .atguigu1 {
+        background-color: yellowgreen;
+    }
+
+    .atguigu2 {
+        font-size: 20px;
+        text-shadow: 2px 2px 10px red;
+    }
+
+    .atguigu3 {
+        border-radius: 20px;
+    }
+</style>
+<!-- 引入vue -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root"> 
+        <!-- 关键代码 :class 这样写就交给vue管理了，会把这两个class加在一起，这样就实现了两个样式叠加的效果 -->
+        <!-- <div class="basic" :class="mood" @click="changeMood">{{name}}</div> -->
+
+        <!-- 追加样式，比如上面的atguigu1，atguigu2，atguigu3，我可能用一个，两个，或者三个 -->
+         <!-- 方法：让class绑定一个数组，数组里面指定需要几个class -->
+        <!-- <div class="basic" :class="arr" @click="changeMood">{{name}}</div> -->
+
+        <!-- 绑定样式的个数，名称，确定，但是用还是不用不确定。 -->
+         <!-- 方法：让class绑定一个对象，对象里面的属性是类名，类名使用布尔值判断是否使用 -->
+         <div class="basic" :class="styleObj" @click="changeMood">{{name}}</div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            // 绑定盒子
+            el:'#root',
+            data:{
+                // name:'绑定calss',
+                name:'添加样式',
+                // 初始化样式
+                // mood:'normal',
+                // 指定class为三个样式
+                // arr:['atguigu1','atguigu2','atguigu3'],
+                // 对象指定样式
+                styleObj:{
+                    atguigu1:false,
+                    atguigu2:true,
+                }
+            },
+            methods: {
+                // 点击切换happy
+                // changeMood(){
+                //     // 切换样式
+                //    this.mood='happy'
+                // }
+                
+                // 点击随机切换三种样式
+                changeMood(){
+                    // 定义一个数组，三种心情，随机取0,1,2值
+                    const arr=['normal','happy','sad']
+                    // 随机取0,1,2
+                    const index=Math.floor(Math.random()*3)
+                    this.mood=arr[index]
+                } 
+            },
+        })
+        
+    </script>
+</body>
+
+</html>
