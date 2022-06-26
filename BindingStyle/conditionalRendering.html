@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<body>
+    <!-- 准备容器 -->
+    <div id="root">
+        <!-- 演示v-show
+        <h1 v-show="isShow">Hello World</h1> -->
+
+        <!-- 演示v-if -->
+        <h1 v-if="isShow">Hello World</h1>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#root',
+            data: {
+                // 为true显示，false隐藏
+                isShow: false
+            }
+        })
+    </script>
+
+</body>
+
+</html>

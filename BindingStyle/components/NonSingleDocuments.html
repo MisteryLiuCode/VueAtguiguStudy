@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>{{msg}}</h1>
+        <school></school>
+        <hr>
+        <xuesheng></xuesheng>
+    </div>
+    <script type="text/javascript">
+        
+        // 创建组件，里面不能再有el属性了,el是为了指定为哪个标签服务的，而组件为了实现复用，不能直接指定，由vm来指定。
+        const school=Vue.extend({
+            template:`
+            <div>
+                <h2>学校名称：{{schoolName}}</h2>
+                <h2>学校地址：{{address}}</h2>
+                <button @click="getSchoolName()">点我获取学校名</button>
+                </div>
+            `,
+            data(){
+                return {
+                schoolName:'北京大学',
+                address:'北京'
+                }
+            },
+            methods:{
+                getSchoolName(){
+                    alert(this.schoolName)
+                }
+            }
+        })
+
+        // 创建学生组件
+        const student=Vue.extend({
+            template:`
+            <div>
+                <h2>学生姓名：{{studentName}}</h2>
+                <h2>学生年龄：{{age}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                studentName:'misteryliu',
+                age:22
+                }
+            }
+        })
+
+
+
+        // 全局注册组件
+        Vue.component('school',school)
+
+        // 注册组件
+        new Vue({
+            el:'#root',
+            data:{
+                msg:'vm里面的数据'
+            },
+            components:{
+                // 演示上面的全局注册组件
+                // school:school,
+                xuesheng:student
+            }
+        })
+    </script>
+</body>
+</html>
